@@ -38,7 +38,7 @@ function Universe() {
           </div>
           <div className="col-12 col-sm-6 col-md-4 col-lg-4 p-3 mt-4">
             <img
-              src="media/images/zerodhaFundhouse.png"
+              src="media/images/fundhouse_cover.webp"
               style={{ maxWidth: "120px", height: "auto" }}
               alt="Zerodha Fundhouse"
             />
