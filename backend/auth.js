@@ -2,33 +2,34 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 
-const users = []; // Use DB in future
+const users = []; // In-memory user storage for now
 
-// Signup (can be improved later)
+// ▶️ Signup Route
 router.post("/signup", (req, res) => {
-    const { email, password } = req.body;
+    const { fullName, email, username, password } = req.body;
 
-    // Store in users array or DB
-    users.push({ email, password });
+    // Save user in memory (replace with DB later)
+    users.push({ fullName, email, username, password });
 
-    res.json({ message: "Signup successful" });
+    const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: "7d" });
+    res.json({ message: "Signup successful", token });
 });
 
-// Signin (Login + Generate Token)
+// ▶️ Signin Route
 router.post("/signin", (req, res) => {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
-    const user = users.find(u => u.email === email && u.password === password);
+    const user = users.find(u => u.username === username && u.password === password);
 
     if (!user) {
-        return res.status(401).json({ error: "Invalid credentials" });
+        return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    const token = jwt.sign({ email }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ username }, process.env.JWT_SECRET, {
         expiresIn: "7d"
     });
 
-    res.json({ token });
+    res.json({ message: "Signin successful", token });
 });
 
 module.exports = router;
