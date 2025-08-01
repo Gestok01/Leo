@@ -18,8 +18,8 @@ function Signin() {
         if (data.token) {
             localStorage.setItem('token', data.token);
             setMessage('Signin successful!');
-            // Redirect to dashboard app
-            window.location.href = process.env.REACT_APP_DASHBOARD_URL || '/'; // Uses env var or root as fallback
+            // Redirect to deployed dashboard
+            window.location.href = 'https://leo-byn7.vercel.app/';
         } else {
             setMessage(data.message || 'Signin failed');
         }

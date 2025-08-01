@@ -18,9 +18,9 @@ function Signup() {
         });
         const data = await res.json();
         setMessage(data.message);
-        // Redirect to dashboard if signup is successful (customize condition as needed)
+        // Redirect to dashboard on successful signup
         if (data.token || data.success) {
-            window.location.href = 'https://stackvast-dashboard.onrender.com';
+            window.location.href = 'https://leo-byn7.vercel.app/';
         }
     };
 
