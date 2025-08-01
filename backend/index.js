@@ -19,10 +19,10 @@ const app = express();
 
 app.use(cors({
   origin: [
-    'http://localhost:3000',
+   'http://localhost:3000',
     'http://localhost:3001',
-    'https://stackvast-dashboard.onrender.com',
-    'https://stackvast-frontend.onrender.com'
+    'https://leo-byn7.vercel.app',
+    'https://leo-orpin.vercel.app'
   ],
   credentials: true
 }));
