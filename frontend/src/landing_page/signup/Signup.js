@@ -12,20 +12,22 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("Calling API at:", `${process.env.REACT_APP_API_URL || ''}/api/auth/signup`);
+      const apiURL = `${process.env.REACT_APP_API_URL || 'https://leo-backend-h68o.onrender.com'}/api/auth/signup`;
+      console.log("Calling API at:", apiURL);
 
-      const res = await fetch(`${process.env.REACT_APP_API_URL || 'https://leo-backend-h68o.onrender.com'}/api/auth/signup`, {
+      const res = await fetch(apiURL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ fullName, email, username, password }),
       });
 
       const data = await res.json();
-      setMessage(data.message || 'Signup completed');
-
-      if (data.token || data.success) {
+      if (data.token) {
         localStorage.setItem('token', data.token);
-        window.location.href = 'https://leo-byn7.vercel.app'; // ✅ Correct dashboard URL
+        setMessage('Signup successful!');
+        window.location.href = 'https://leo-byn7.vercel.app';
+      } else {
+        setMessage(data.message || 'Signup failed');
       }
     } catch (err) {
       console.error(err);
@@ -58,4 +60,5 @@ function Signup() {
 }
 
 export default Signup;
+
 
