@@ -9,6 +9,7 @@ function Signin() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("Calling API at:", `${process.env.REACT_APP_BACKEND_URL}/api/auth/signup`);
         const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/auth/signin`, {
 
             method: 'POST',
