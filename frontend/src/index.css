@@ -8,34 +8,52 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-
-.nav-link{
+.nav-link {
   margin-left: 40px;
 }
 
-#supportHero{
+#supportHero {
   background-color: rgb(2, 35, 75);
   color: white;
+  padding: 2rem 1rem;
 }
 
-#supportHero a{
+#supportHero a {
   color: white;
 }
 
-#supportWrapper{
+#supportWrapper {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 2rem;
   margin: 0 150px;
 }
 
-#supportHero input{
-  padding: 20px 50px;
+#supportHero input {
+  padding: 20px;
   width: 100%;
   font-size: 20px;
   border-radius: 10px;
   border: none;
+}
+
+/* ✅ Mobile responsiveness */
+@media (max-width: 768px) {
+  #supportWrapper {
+    flex-direction: column;
+    margin: 0 1rem;
+  }
+
+  .nav-link {
+    margin-left: 16px;
+  }
+
+  #supportHero input {
+    font-size: 16px;
+    padding: 16px;
+  }
 }
